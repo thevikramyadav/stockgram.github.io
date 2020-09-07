@@ -1,0 +1,142 @@
+<div class="pg_auth_page pg_welcome">
+	<div class="login_page">
+		<div class="login-pagez">
+			<a href="{{CONFIG site_url}}" class="logo"><img src="{{CONFIG site_url}}/media/img/logo.{{CONFIG logo_extension}}" alt="logo"></a>
+			<h3>{{LANG welcome_to}} {{CONFIG site_name}}</h3>
+			<p>{{LANG sign_in}}</p>
+			<ul class="list-unstyled social-login">
+				<?php if ($config['fb_login'] == 'on') { ?>
+					<li><a href="{{CONFIG site_url}}/social_login.php?provider=Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path fill="#4267b3" d="M12.001,2.002c-5.522,0-9.999,4.477-9.999,9.999c0,4.99,3.656,9.126,8.437,9.879v-6.988h-2.54v-2.891h2.54V9.798	c0-2.508,1.493-3.891,3.776-3.891c1.094,0,2.24,0.195,2.24,0.195v2.459h-1.264c-1.24,0-1.628,0.772-1.628,1.563v1.875h2.771	l-0.443,2.891h-2.328v6.988C18.344,21.129,22,16.992,22,12.001C22,6.479,17.523,2.002,12.001,2.002z"></path></svg></a></li>
+				<?php } ?>
+				<?php if ($config['tw_login'] == 'on') { ?>
+					<li><a href="{{CONFIG site_url}}/social_login.php?provider=Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path fill="#1da1f2" d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809	c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793	c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05	c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032	c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028	c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22	c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path></svg></a></li>
+				<?php } ?>
+				<?php if ($config['gl_login'] == 'on') { ?>
+					<li><a href="{{CONFIG site_url}}/social_login.php?provider=Google"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#EA4335" d="M3.064 7.51A9.996 9.996 0 0 1 12 2c2.695 0 4.959.99 6.69 2.605l-2.867 2.868C14.786 6.482 13.468 5.977 12 5.977c-2.605 0-4.81 1.76-5.595 4.123-.2.6-.314 1.24-.314 1.9 0 .66.114 1.3.314 1.9.786 2.364 2.99 4.123 5.595 4.123 1.345 0 2.49-.355 3.386-.955a4.6 4.6 0 0 0 1.996-3.018H12v-3.868h9.418c.118.654.182 1.336.182 2.045 0 3.046-1.09 5.61-2.982 7.35C16.964 21.105 14.7 22 12 22A9.996 9.996 0 0 1 2 12c0-1.614.386-3.14 1.064-4.49z"/></svg></a></li>
+				<?php } ?>
+				<?php if ($config['wowonder_login'] == 'on') { ?>
+					<li><a href="{{CONFIG wowonder_domain_uri}}/oauth?app_id={{CONFIG wowonder_app_ID}}"><img src="{{CONFIG wowonder_domain_icon}}" alt=""></a></li>
+				<?php } ?>
+			</ul>
+			<form action="" class="form" id="login">
+				<div class="signin-alert"></div>
+				<div class="pg_mat_input">
+					<input required="true" type="text" name="username" id="username" placeholder="{{LANG uname_or_email}}" autofocus />
+					<label for="username">{{LANG uname_or_email}}</label>
+				</div>
+				<div class="pg_mat_input pg_wel_forgot">
+					<input type="password" name="password" id="password" placeholder="{{LANG ur_password}}" required />
+					<label for="password">{{LANG ur_password}}</label>
+					<a href="{{CONFIG site_url}}/forgot">Forgot?</a>
+				</div>
+				<input type="hidden" name="hash" value="<?php echo($context['csrf_token']) ?>">
+				<button class="btn btn-large btn-main btn-mat" id="sign_submit" type="submit">{{LANG login}}</button>
+			</form>
+			<?php if ($config['signup_system'] == 'on') { ?>
+				<p class="to_altr_auth_opt">Don't have an account? <a href="{{CONFIG site_url}}/signup">{{LANG signup_now}}</a></p>
+			<?php } ?>
+		</div>
+		<div class="pg_welcome_foot">
+			<p class="copyright">&copy; <?php echo date("Y") ?> {{CONFIG site_name}}</p>
+			<div class="dropup lang_select">
+				<span class="dropdown-toggle" data-toggle="dropdown">
+					<svg height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M5 15v2a2 2 0 0 0 1.85 1.995L7 19h3v2H7a4 4 0 0 1-4-4v-2h2zm13-5l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16 10h2zm-1 2.885L15.753 16h2.492L17 12.885zM8 2v2h4v7H8v3H6v-3H2V4h4V2h2zm9 1a4 4 0 0 1 4 4v2h-2V7a2 2 0 0 0-2-2h-3V3h3zM6 6H4v3h2V6zm4 0H8v3h2V6z"></path></svg> {{LANG language}}
+				</span>
+				<ul class="dropdown-menu">
+					<?php foreach ($context['langs'] as $key => $val) { ?>
+						<li><a href='<?php echo(pxp_link("?lang=".$key)) ?>'><?php echo $val; ?></a></li>
+					<?php } ?>
+				</ul>
+			</div>
+		</div>
+		<div class="svg_divider">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="none" width="100%" height="100%" version="1.1"><path d="M0,0 L100,0 L100,100 L0,100 C66.6666667,83.3333333 100,66.6666667 100,50 C100,33.3333333 66.6666667,16.6666667 0,0 Z" fill="currentColor"></path></svg>
+        </div>
+	</div>
+	<div class="login_aside">
+		<div class="login_aside_innr">
+			<div class="pg_welcome_feats">
+				<div class="pg_we_feat_blck">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#f2447f" d="M21.179 12.794l.013.014L12 22l-9.192-9.192.013-.014A6.5 6.5 0 0 1 12 3.64a6.5 6.5 0 0 1 9.179 9.154z"></path></svg>
+					<div>
+						<b>{{LANG like}}</b>
+						<p>{{LANG welcome_feature_1}}</p>
+					</div>
+				</div>
+				<div class="pg_we_feat_blck">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#009688" d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z"></path></svg>
+					<div>
+						<b>{{LANG follow}}</b>
+						<p>{{LANG welcome_feature_2}}</p>
+					</div>
+				</div>
+				<div class="pg_we_feat_blck">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#FF9800" d="M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z"></path></svg>
+					<div>
+						<b>{{LANG save}}</b>
+						<p>{{LANG welcome_feature_3}}</p>
+					</div>
+				</div>
+			<?php if ($config['signup_system'] == 'on') { ?>
+				<a class="btn" href="{{CONFIG site_url}}/signup"><span>{{LANG signup_now}}</span></a>
+			<?php } ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	jQuery(document).ready(function($) {
+		$("form#login").ajaxForm({
+			url: '<?php echo($context['xhr_url']) ?>/signin',
+			type: 'POST',
+			dataType: 'json',
+			beforeSend: function(){
+				$('form').find('button[type="submit"]').attr('disabled','true');
+			},
+			success: function(data){
+				if (data.status == 200) {
+					$(".signin-alert").html($('<div>',{
+						class: 'alert alert-success',
+						text: 'Successfully logged in, please wait...'
+					}));
+					setTimeout(function(){
+						window.location.href = "{{CONFIG site_url}}";
+					},2000);
+				}
+				else{
+					$(".signin-alert").html($('<div>',{
+						class: 'alert alert-danger',
+						text: data.message
+					}));
+				}
+				$('form').find('button[type="submit"]').removeAttr('disabled');
+			}
+		})
+	});
+</script>
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+
+<script>
+	window.addEventListener("load", function(){
+	window.cookieconsent.initialise({
+	"palette": {
+		"popup": {
+		"background": "#3937a3"
+		},
+		"button": {
+		"background": "#e62576"
+		}
+	},
+	"theme": "classic",
+	"position": "bottom-left",
+	"content": {
+		"message": "{{LANG website_use_cookies}}",
+		"dismiss": "{{LANG got_it}}",
+			"link": "{{LANG learn_more1}}",
+			"href": "{{CONFIG site_url}}/privacy-and-policy"
+	}
+	})});
+</script>
